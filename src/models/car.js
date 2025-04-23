@@ -1,4 +1,3 @@
-import {DataTypes} from 'sequelize';
 import sequelize from  '../config/db.js';
 
 const Car = sequelize.define('car', {

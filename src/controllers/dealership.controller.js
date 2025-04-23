@@ -1,20 +1,31 @@
 import DealershipService from "../services/dealership.service.js";
 
 class DealershipController {
-    async getAllCars(req, res) {
-        const cars = await DealershipService.getAllCars();
-        res.json(cars);
+    async createDealership(req, res) {
+        const dealership = await DealershipService.create(req.body);
+        res.status(201).json(dealership);
     }
 
-    async getCarById(req, res) {
+    async assignUsers(req, res) {
         const {id} = req.params;
-        const car = await CarService.getCarById(id);
-        res.json(car);
+        const resp = await DealershipService.assignUsers(id, {...req.body});
+        res.json(resp);
     }
 
-    async createCar(req, res) {
-        const car = await CarService.createCar({...req.body});
-        res.status(201).json(car);
+    async assignCar(req, res) {
+        const {id} = req.params;
+        const resp = await DealershipService.assignCar(id, {...req.body});
+        res.json(resp);
+    }
+
+    async getAllDealership(req, res) {
+        const resp = await DealershipService.getAllDealership();
+        res.json(resp);
+    }
+
+    async viewDetails(req, res) {
+        const resp = await DealershipService.viewDetails({...req.body});
+        res.json(resp);
     }
 }
 

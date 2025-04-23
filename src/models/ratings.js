@@ -16,7 +16,6 @@ const Rating = sequelize.define('rating', {
         validate: { min: 0, max: 5 }
     },
 }, {
-    tableName: 'ratings',
     timestamps: false,
 });
 
